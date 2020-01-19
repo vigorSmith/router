@@ -1,39 +1,43 @@
-#����
-��ת����ɣ���ͨ��ͼ�ε�һЩ����������һЩʵ�õļӽ��ܹ���
+# 背景
+抛转引玉吧，想通过图形的一些规则，衍生出一些实用的加解密规则
 
-#˼·
-һ��δ��ɵļӽ����㷨�����ҽ�**router**��������**·��̽Ѱ�㷨**��
+****
+# 思路
+一种未完成的加解密算法，暂且叫**router**，中文名**路径探寻算法**：
 
-1.��Բ��ͨ��һ��������������зָ��8���ָ�㣬����ע����ţ�˳ʱ�뷽����1-8
+1.在圆形通过一定规则的线条进行分割，如8个分割点，并标注好序号，顺时针方向，如1-8
 
-![image](https://github.com/vigorSmith/router/blob/master/sources/think1.png)
+![思考1](https://github.com/vigorSmith/router/blob/master/sources/think1.png)
 
-2.����ѡȡһ���ָ�㣬�����8����8��ʼ����˳ʱ�뷽���������ڵ������㣬�������󲽳���������0��1,2.������,
-��8-1������0��Ȼ���1��ʼ��1-3������Ϊ1���������ε���������ͼ�������£�
-start
-|·�����|·������|
-|8-1|0|
-|1-3|1|
-|3-6|2|
-|6-2|3|
-|2-7|4|
-|7-5|5|
-|5-3|6|
-over
+2.任意选取一个分割点，如序号8，从8开始依次顺时针方向，连接相邻的两个点，并逐步扩大步长（步长从0，1,2.。。）,
+如8-1，步长0，然后从1开始，1-3，步长为1。。。依次迭代，如右图序列如下：
+start...
 
-3.ֱ�����һ�����޷������������㣬�˿̿�ʼ���зֺŵ�Բ�ηֱ�����Ӧ�������С������������С��������������ձ߳���ע��
+ 路径序号 | 路径步长 
+---- | ----- 
+ 8-1|0 
+ 1-3|1 
+ 3-6|2 
+ 6-2|3 
+ 2-7|4 
+ 7-5|5 
+ 5-3|6 
 
-![image](https://github.com/vigorSmith/router/blob/master/sources/think2.png)
+.over
 
-4.��¼��Ӧ��·��id�����������С
+3.直到最后一个点无法再连接其他点，此刻开始对切分号的圆形分别计算对应的面积大小（或者其他大小），并对面积按照边长标注，
 
-Բ����,����,·��id,�����С
+![思考2](https://github.com/vigorSmith/router/blob/master/sources/think2.png)
+
+4.记录对应的路径id和区域面积大小
+
+圆点数,方向,路径id,区域大小
 |spot|direction|pathId|areaSize|
 |8|wise|8118|xx|
 |8|wise|122731|xx|
 ...
 
-Ŀǰ���������С�����
+目前还差面积大小的输出
 
-#Action
+# Action
 ...
